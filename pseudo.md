@@ -150,6 +150,29 @@ reset()
 ---
 # FUNCTIONALITY
 ---
+INIT
 
-CLICK on the GO button - Page 0
-CLICK on the NEXT button or CLICK on the resetButton
+START on currentPage 0
+
+IF CLICK on the goBtn or nextBtn
+    THEN increment currentPage by one
+ENDIF
+
+IF CLICK on resetBtn
+    THEN currentPage is reset to 0
+END IF
+
+IF page 0 
+    then header and goBtn are visible
+ELSE IF page 1
+    then header, nextBtn, helper, and resetBtn are visible
+ELSE IF page 2
+    then header, nextBtn, example, helper, and resetBtn are visble
+ELSE IF page 3
+    then header, nextBtn, example, helper, and resetBtn are visible
+ELSE IF Page 4
+    the header with symbols array, nextBtn(reveal), example, helper, and resetBtn are visible
+ELSE IF Page 5
+    the header with One symbol, example, helper, and resetBtn are visible
+ENDIF
+
