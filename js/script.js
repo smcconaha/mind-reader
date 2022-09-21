@@ -73,6 +73,8 @@ const example = document.getElementById('example');
 const helper = document.getElementById('helper');
 const header = document.getElementById('header');
 
+//Helper function to update HTML element values
+
 function updatePage () {
     header.textContent = state.pages[state.currentPage].header;
     helper.textContent = state.pages[state.currentPage].helper;
@@ -82,16 +84,19 @@ function updatePage () {
     example.textContent = state.pages[state.currentPage].example;
 }; 
 
+//Page increment and reset function
+
 resetBtn.addEventListener('click', () => {
     state.currentPage = 0;
+    updatePage ();
 });
-
-//Page increment and reset function
 
 nextBtn.addEventListener('click', () => {
     state.currentPage ++;
+    updatePage ();
 });
 
 goBtn.addEventListener('click', () => {
     state.currentPage ++;
+    updatePage ();
 });
