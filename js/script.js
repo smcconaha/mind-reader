@@ -1,4 +1,4 @@
-//let state = {
+let state = {
     pages: [
         {
         pageNum: 0,
@@ -9,7 +9,7 @@
         resetBtn: '',
         goBtn: 'GO',
         symbols: '',
-        }
+        },
         {
         pageNum: 1,
         header: "Pick a number from 01 -99",
@@ -19,7 +19,7 @@
         resetBtn: 'Reset',
         goBtn: '',
         symbols: '',            
-        }
+        },
         {
         pageNum: 2,
         header: "Add both digits together to get a new number",
@@ -29,7 +29,7 @@
         resetBtn: 'Reset',
         goBtn: '',
         symbols: '',            
-        }
+        },
         {
         pageNum: 3,
         header: "Subtract your new number from the original number",
@@ -39,7 +39,7 @@
         resetBtn: 'Reset',
         goBtn: '',
         symbols: '',            
-        }
+        },
         {
         pageNum: 4,
         header: "Symbols",
@@ -49,7 +49,7 @@
         resetBtn: 'Reset',
         goBtn: '',
         symbols: '',            
-        }
+        },
         {
         pageNum: 5,
         header: "Symbol",
@@ -59,11 +59,12 @@
         resetBtn: 'Reset',
         goBtn: '',
         symbols: '',            
-        }
-    ]
-    currentPage:[],
-    symbols:'',
-    answer:'',
+        },
+    ],
+    currentPage: 0,
+    symbols: '',
+    answer: '',
+};
 //Tie HTML elements to variables
 const nextBtn = document.getElementById('nextBtn');
 const resetBtn = document.getElementById('resetBtn');
@@ -72,15 +73,25 @@ const example = document.getElementById('example');
 const helper = document.getElementById('helper');
 const header = document.getElementById('header');
 
-nextBtn.addEventListener('click', () => {
-    alert('you clicked a button');
-});
+function updatePage () {
+    header.textContent = state.pages[state.currentPage].header;
+    helper.textContent = state.pages[state.currentPage].helper;
+    nextBtn.textContent = state.pages[state.currentPage].nextBtn;
+    goBtn.textContent = state.pages[state.currentPage].goBtn;
+    resetBtn.textContent = state.pages[state.currentPage].resetBtn;
+    example.textContent = state.pages[state.currentPage].example;
+}; 
 
 resetBtn.addEventListener('click', () => {
-    alert('you clicked a button');
+    state.currentPage = 0;
+});
+
+//Page increment and reset function
+
+nextBtn.addEventListener('click', () => {
+    state.currentPage ++;
 });
 
 goBtn.addEventListener('click', () => {
-    alert('you clicked a button');
+    state.currentPage ++;
 });
-
