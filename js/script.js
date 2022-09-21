@@ -84,19 +84,48 @@ function updatePage () {
     example.textContent = state.pages[state.currentPage].example;
 }; 
 
+//Helper function to clear buttons
+function clearBtns () {
+    if (goBtn.textContent === '') {
+        goBtn.hidden = true;
+    } else {
+        goBtn.hidden = false;
+    }
+    if (resetBtn.textContent === '') {
+        resetBtn.hidden = true;
+    } else {
+        resetBtn.hidden = false;
+    }
+    if (nextBtn.textContent === '') {
+        nextBtn.hidden = true;
+    } else {
+        nextBtn.hidden = false;
+    }
+};
+
+//
+document.addEventListener('DOMContentLoaded', () => {
+    state.currentPage = 0;
+    updatePage();
+    clearBtns ();
+});
+
 //Page increment and reset function
 
 resetBtn.addEventListener('click', () => {
     state.currentPage = 0;
     updatePage ();
+    clearBtns();
 });
 
 nextBtn.addEventListener('click', () => {
     state.currentPage ++;
     updatePage ();
+    clearBtns();
 });
 
 goBtn.addEventListener('click', () => {
     state.currentPage ++;
     updatePage ();
+    clearBtns();
 });

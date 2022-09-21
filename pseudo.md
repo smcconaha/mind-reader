@@ -162,6 +162,11 @@ IF CLICK on resetBtn
     THEN currentPage is reset to 0
 END IF
 
+FUNCTION
+    IF html element does not contain content
+    THEN set to hidden
+ENDFUNCTION
+
 IF page 0 
     then header and goBtn are visible
 ELSE IF page 1
