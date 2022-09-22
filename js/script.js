@@ -9,7 +9,7 @@ let state = {
         example: '',
         helper: '',
         resetBtn: '',
-        goBtn: 'GO',
+        goBtn: '<i class="bi bi-forward"></i>',
         symbols: '',
         },
         {
@@ -18,7 +18,7 @@ let state = {
         nextBtn: 'Next',
         example: '',
         helper: 'when you have your number click next',
-        resetBtn: 'Reset',
+        resetBtn: '<i class="bi bi-recycle"></i>',
         goBtn: '',
         symbols: '',            
         },
@@ -28,7 +28,7 @@ let state = {
         nextBtn: 'Next',
         example: '14 is 1 + 4 = 5',
         helper: 'click next to proceed',
-        resetBtn: 'Reset',
+        resetBtn: '<i class="bi bi-recycle"></i>',
         goBtn: '',
         symbols: '',            
         },
@@ -38,7 +38,7 @@ let state = {
         nextBtn: 'Next',
         example: 'Ex: 14 - 5 = 9',
         helper: 'click next to proceed',
-        resetBtn: 'Reset',
+        resetBtn: 'Reset<i class="bi bi-recycle"></i>',
         goBtn: '',
         symbols: '',            
         },
@@ -48,7 +48,7 @@ let state = {
         nextBtn: 'Reveal',
         example: 'Find your new number',
         helper: 'Note the symbol beside the number',
-        resetBtn: 'Reset',
+        resetBtn: '<i class="bi bi-recycle"></i>',
         goBtn: '',
         symbols: '',            
         },
@@ -58,7 +58,7 @@ let state = {
         nextBtn: '',
         example: `Your symbol is ${answerArr}`,
         helper: 'Note the symbol beside the number',
-        resetBtn: 'Reset',
+        resetBtn: '<i class="bi bi-recycle"></i>',
         goBtn: '',
         symbols: '',            
         },
@@ -80,19 +80,19 @@ function updatePage () {
     header.textContent = state.pages[state.currentPage].header;
     helper.textContent = state.pages[state.currentPage].helper;
     nextBtn.textContent = state.pages[state.currentPage].nextBtn;
-    goBtn.textContent = state.pages[state.currentPage].goBtn;
-    resetBtn.textContent = state.pages[state.currentPage].resetBtn;
+    goBtn.innerHTML = state.pages[state.currentPage].goBtn;
+    resetBtn.innerHTML = state.pages[state.currentPage].resetBtn;
     example.textContent = state.pages[state.currentPage].example;
 }; 
 
 //Helper function to clear buttons
 function clearBtns () {
-    if (goBtn.textContent === '') {
+    if (goBtn.innerHTML === '') {
         goBtn.hidden = true;
     } else {
         goBtn.hidden = false;
     }
-    if (resetBtn.textContent === '') {
+    if (resetBtn.innerHTML === '') {
         resetBtn.hidden = true;
     } else {
         resetBtn.hidden = false;
