@@ -150,35 +150,37 @@ reset()
 ---
 # FUNCTIONALITY
 ---
-INIT
 
-START on currentPage 0
-
-IF CLICK on the goBtn or nextBtn
-    THEN increment currentPage by one
-ENDIF
-
-IF CLICK on resetBtn
-    THEN currentPage is reset to 0
-END IF
-
-FUNCTION
-    IF html element does not contain content
-    THEN set to hidden
-ENDFUNCTION
-
-FUNCTION
-    Given this (! @ # $ % & * ) list of symbols
+FUNCTION - symbolFun
+    Given this (! @ # $ ? % & * ) list of symbols
+    Generate a random number from the array by rounding down the product of a number between 0 & 1 times the length of the array 
     Loop through numbers from 0 to 99
     IF the symbol index is divisible by 9
-        THEN the symbol equals index 0 of the array
+        THEN the symbol for that index equals THE SAME random symbol
+    ELSE
+        the symbol for that index equals a random symbol
     ENDIF
-    Concatenate the numbers with " - " and a symbol
-    Return these as an array
-ENDFUNCTION 
 
-FUNCTION Random
-    If symbols.length Math.round(Math.floor)
+    Concatenate the numbers with " - " and a symbol
+    Return this as an array called symbolArray
+ENDFUNCTION
+
+FUNCTION - clearBtns
+    IF goBtn does not contain text
+        THEN hide it
+    IF resetBtn does not contain text
+        THEN hide it
+    IF nextBtn does not contain text
+        THEN hide it
+ENDFUNCTION
+
+FUNCTION - updatePage
+    LINK HTML text content with state page object values
+ENDFUNCTION
+
+---
+# Page States
+---
 
 IF page 0 
     then header and goBtn are visible
@@ -189,8 +191,39 @@ ELSE IF page 2
 ELSE IF page 3
     then header, nextBtn, example, helper, and resetBtn are visible
 ELSE IF Page 4
-    the header with symbols array, nextBtn(reveal), example, helper, and resetBtn are visible
+    the header with symbolArray, nextBtn(reveal textContent), example, helper, and resetBtn are visible
 ELSE IF Page 5
-    the header with One symbol, example, helper, and resetBtn are visible
+    the header with One symbol (answerArr), example, helper, and resetBtn are visible
 ENDIF
 
+---
+# START
+---
+
+INIT
+
+START with DOMContentLoad on currentPage 0
+RUN updatePage, which loads header text and goBtn
+RUN clearBtns to remove unused buttons
+
+IF CLICK on the goBtn
+    THEN increment currentPage by 1
+    RUN updatePage
+    RUN clearBtns
+ENDIF
+
+IF CLICK on the nextBtn
+    THEN increment currentPage by 1
+    RUN updatePage
+    RUN clearBtns
+ENDIF
+
+IF CLICK on resetBtn
+    THEN currentPage is reset to 0
+    RUN updatePage
+    RUN clearBtns
+END IF
+
+---
+# END PROGRAM
+---  

@@ -1,3 +1,5 @@
+const symbols = ["!", "@", "#", "$","?","%", "&", "*",];
+const answerArr =  symbols[Math.floor(Math.random()*symbols.length)];
 let state = {
     pages: [
         {
@@ -42,7 +44,7 @@ let state = {
         },
         {
         pageNum: 4,
-        header: "Symbols",
+        header: symbolFun (),
         nextBtn: 'Reveal',
         example: 'Find your new number',
         helper: 'Note the symbol beside the number',
@@ -54,7 +56,7 @@ let state = {
         pageNum: 5,
         header: "Symbol",
         nextBtn: '',
-        example: 'Your symbol is',
+        example: `Your symbol is ${answerArr}`,
         helper: 'Note the symbol beside the number',
         resetBtn: 'Reset',
         goBtn: '',
@@ -74,7 +76,6 @@ const helper = document.getElementById('helper');
 const header = document.getElementById('header');
 
 //Helper function to update HTML element values
-
 function updatePage () {
     header.textContent = state.pages[state.currentPage].header;
     helper.textContent = state.pages[state.currentPage].helper;
@@ -111,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //Page increment and reset function
-
 resetBtn.addEventListener('click', () => {
     state.currentPage = 0;
     updatePage ();
@@ -130,33 +130,16 @@ goBtn.addEventListener('click', () => {
     clearBtns ();
 });
 
-const symbols = ["!", "@", "#", "$", "%", "&", "*",];
-
+//Random array generator
 function symbolFun () {
     let symbolArray = [];
-    const answerIndex = symbols.length % 9 === 0;
-    for (i = symbolArray.length; i < 100; i++) {
+    for (i = 0; i < 100; i++) {
         let random = Math.floor(Math.random()*symbols.length);
-        symbolArray.push(`${i} - ${symbols[random]}`);
-        if (answerIndex) {
-            symbolArray[i].replace(symbolArray[i],symbolArray[0]);
+        if (i % 9 === 0) {
+            symbolArray.push(`${i} - ${answerArr}`);
+        } else {
+            symbolArray.push(`${i} - ${symbols[random]}`);
         }
     };
     return symbolArray;
 };
-
-/*;
-if (answerIndex === 0) {
-    answerIndex == "Answer Symbol";
-} else {
-
-}
-
-Symbols Function
-function symbolDisplay () {
-    
-    for (i = symbols.length; i < 100; i++) {
-        symbols.push(symbols);
-    }
-    return symbols;
-};*/
