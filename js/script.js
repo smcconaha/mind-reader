@@ -43,7 +43,7 @@ let state = {
         {
         pageNum: 4,
         header: "Symbols",
-        nextBtn: 'Next',
+        nextBtn: 'Reveal',
         example: 'Find your new number',
         helper: 'Note the symbol beside the number',
         resetBtn: 'Reset',
@@ -62,7 +62,7 @@ let state = {
         },
     ],
     currentPage: 0,
-    symbols: '',
+    symbols: [],
     answer: '',
 };
 //Tie HTML elements to variables
@@ -106,7 +106,7 @@ function clearBtns () {
 //
 document.addEventListener('DOMContentLoaded', () => {
     state.currentPage = 0;
-    updatePage();
+    updatePage ();
     clearBtns ();
 });
 
@@ -115,17 +115,48 @@ document.addEventListener('DOMContentLoaded', () => {
 resetBtn.addEventListener('click', () => {
     state.currentPage = 0;
     updatePage ();
-    clearBtns();
+    clearBtns ();
 });
 
 nextBtn.addEventListener('click', () => {
     state.currentPage ++;
     updatePage ();
-    clearBtns();
+    clearBtns ();
 });
 
 goBtn.addEventListener('click', () => {
     state.currentPage ++;
     updatePage ();
-    clearBtns();
+    clearBtns ();
 });
+
+const symbols = ["!", "@", "#", "$", "%", "&", "*",];
+
+function symbolFun () {
+    let symbolArray = [];
+    const answerIndex = symbols.length % 9 === 0;
+    for (i = symbolArray.length; i < 100; i++) {
+        let random = Math.floor(Math.random()*symbols.length);
+        symbolArray.push(`${i} - ${symbols[random]}`);
+        if (answerIndex) {
+            symbolArray[i].replace(symbolArray[i],symbolArray[0]);
+        }
+    };
+    return symbolArray;
+};
+
+/*;
+if (answerIndex === 0) {
+    answerIndex == "Answer Symbol";
+} else {
+
+}
+
+Symbols Function
+function symbolDisplay () {
+    
+    for (i = symbols.length; i < 100; i++) {
+        symbols.push(symbols);
+    }
+    return symbols;
+};*/

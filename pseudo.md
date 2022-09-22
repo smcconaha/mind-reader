@@ -167,6 +167,19 @@ FUNCTION
     THEN set to hidden
 ENDFUNCTION
 
+FUNCTION
+    Given this (! @ # $ % & * ) list of symbols
+    Loop through numbers from 0 to 99
+    IF the symbol index is divisible by 9
+        THEN the symbol equals index 0 of the array
+    ENDIF
+    Concatenate the numbers with " - " and a symbol
+    Return these as an array
+ENDFUNCTION 
+
+FUNCTION Random
+    If symbols.length Math.round(Math.floor)
+
 IF page 0 
     then header and goBtn are visible
 ELSE IF page 1
