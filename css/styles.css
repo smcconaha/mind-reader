@@ -1,0 +1,19 @@
+#header {
+    text-overflow: " [..]";
+}
+
+div[class*="container"] {
+    min-height: 150px;
+}
+
+div[class*="col"] {
+    min-height: 150px;
+}
+
+body {
+    background: linear-gradient(
+        180deg,
+        rgb(10, 209, 209) 50px,
+        rgb(6, 222, 222) 80px
+    ); 
+}
