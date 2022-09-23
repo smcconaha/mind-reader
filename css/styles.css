@@ -1,5 +1,5 @@
 #header {
-    text-overflow: " [..]";
+    max-height: 250px;
 }
 
 div[class*="container"] {
@@ -12,8 +12,8 @@ div[class*="col"] {
 
 body {
     background: linear-gradient(
-        180deg,
-        rgb(10, 209, 209) 50px,
-        rgb(6, 222, 222) 80px
-    ); 
+    90deg,
+    rgb(10, 209, 209) 70px,
+    rgb(6, 222, 222) 150px
+    );
 }

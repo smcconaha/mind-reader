@@ -54,9 +54,9 @@ let state = {
         },
         {
         pageNum: 5,
-        header: "Symbol",
+        header: `Your symbol is ${answerArr}`,
         nextBtn: '',
-        example: `Your symbol is ${answerArr}`,
+        example: '',
         helper: 'Note the symbol beside the number',
         resetBtn: 'Reset <i class="bi bi-recycle"></i>',
         goBtn: '',
