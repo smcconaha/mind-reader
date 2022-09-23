@@ -3,11 +3,11 @@
 }
 
 div[class*="container"] {
-    min-height: 250px;
+    min-height: 150px;
 }
 
 div[class*="col"] {
-    min-height: 250px;
+    min-height: 150px;
 }
 
 body {
