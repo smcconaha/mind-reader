@@ -1,6 +1,10 @@
 const symbols = ["!", "@", "#", "$","?","%", "&", "*",];
 const answerArr =  symbols[Math.floor(Math.random()*symbols.length)];
-const direction = document.getElementById('directions');//Will be UL parent element
+const highlight = document.getElementById('highlight');//Will be UL parent element
+let symbolUl = document.createElement('ul'); //adding UL element to house possible answers
+symbolUl.setAttribute('id','symbolList');
+symbolUl.setAttribute('class', 'overflow-scroll');
+highlight.appendChild(symbolUl);
 let state = {
     pages: [
         {
@@ -45,7 +49,7 @@ let state = {
         },
         {
         pageNum: 4,
-        header: symbolFun (),
+        header: '',
         nextBtn: 'Reveal <i class="bi bi-question-circle"></i>',
         example: 'Find your new number',
         helper: 'Note the symbol beside the number',
@@ -76,6 +80,7 @@ const goBtn = document.getElementById('goBtn');
 const example = document.getElementById('example');
 const helper = document.getElementById('helper');
 const header = document.getElementById('header');
+
 
 //Helper function to update HTML element values
 function updatePage () {
@@ -109,8 +114,9 @@ function clearBtns () {
 //INIT Function
 function init () {
     state.currentPage = 0;
-    clearBtns ();
     updatePage ();
+    clearBtns ();
+    symbolFun();
 };
 document.addEventListener('DOMContentLoaded', init);
 
@@ -119,14 +125,17 @@ resetBtn.addEventListener('click', init);
 
 nextBtn.addEventListener('click', () => {
     state.currentPage ++;
-    clearBtns ();
     updatePage ();
+    clearBtns ();
+    symbolFun();
+    console.log(state.pages.pageNum);
 });
 
 goBtn.addEventListener('click', () => {
     state.currentPage ++;
-    clearBtns ();
     updatePage ();
+    clearBtns ();
+    console.log(state.pages.pageNum);
 });
 
 //Random array generator, removed and replaced with UL and LI for possible answers
@@ -144,11 +153,13 @@ goBtn.addEventListener('click', () => {
 };*/
 
 function symbolFun () {
-    //while (state.pages.pageNum === 4) {
-        let symbolUl = document.createElement('ul'); //adding UL element to house possible answers
-        symbolUl.setAttribute('id','symbolList');
-        symbolUl.setAttribute('class','col-4');
-        direction.appendChild(symbolUl);
+    if (state.currentPage !== 4) {
+        console.log('not 4');
+        while (symbolUl.firstChild) {
+            symbolUl.removeChild(symbolUl.firstChild);
+        }
+    } else {
+        console.log('PAGE4');
         let symbolLi;
         for (i = 0; i < 100; i++) {
             let random = Math.floor(Math.random()*symbols.length);
@@ -161,7 +172,6 @@ function symbolFun () {
                 symbolLi.textContent = `${i} - ${symbols[random]}`;
                 symbolUl.appendChild(symbolLi);            
             };
-        };
-    //};    
+        }; 
+    };
 };
-init ();
