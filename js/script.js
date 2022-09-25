@@ -1,5 +1,6 @@
 const symbols = ["!", "@", "#", "$","?","%", "&", "*",];
 const answerArr =  symbols[Math.floor(Math.random()*symbols.length)];
+const direction = document.getElementById('directions');//Will be UL parent element
 let state = {
     pages: [
         {
@@ -67,6 +68,7 @@ let state = {
     symbols: [],
     answer: '',
 };
+
 //Tie HTML elements to variables
 const nextBtn = document.getElementById('nextBtn');
 const resetBtn = document.getElementById('resetBtn');
@@ -104,34 +106,31 @@ function clearBtns () {
     }
 };
 
-//
-document.addEventListener('DOMContentLoaded', () => {
+//INIT Function
+function init () {
     state.currentPage = 0;
-    updatePage ();
     clearBtns ();
-});
+    updatePage ();
+};
+document.addEventListener('DOMContentLoaded', init);
 
-//Page increment and reset function
-resetBtn.addEventListener('click', () => {
-    state.currentPage = 0;
-    updatePage ();
-    clearBtns ();
-});
+//Page increment and reset button functionality
+resetBtn.addEventListener('click', init);
 
 nextBtn.addEventListener('click', () => {
     state.currentPage ++;
-    updatePage ();
     clearBtns ();
+    updatePage ();
 });
 
 goBtn.addEventListener('click', () => {
     state.currentPage ++;
-    updatePage ();
     clearBtns ();
+    updatePage ();
 });
 
-//Random array generator
-function symbolFun () {
+//Random array generator, removed and replaced with UL and LI for possible answers
+/*function symbolFun () {
     let symbolArray = [];
     for (i = 0; i < 100; i++) {
         let random = Math.floor(Math.random()*symbols.length);
@@ -142,4 +141,27 @@ function symbolFun () {
         }
     };
     return symbolArray;
+};*/
+
+function symbolFun () {
+    //while (state.pages.pageNum === 4) {
+        let symbolUl = document.createElement('ul'); //adding UL element to house possible answers
+        symbolUl.setAttribute('id','symbolList');
+        symbolUl.setAttribute('class','col-4');
+        direction.appendChild(symbolUl);
+        let symbolLi;
+        for (i = 0; i < 100; i++) {
+            let random = Math.floor(Math.random()*symbols.length);
+            if (i % 9 === 0) {
+                symbolLi = document.createElement('li');
+                symbolLi.textContent = `${i} - ${answerArr}`;
+                symbolUl.appendChild(symbolLi);
+            } else {
+                symbolLi = document.createElement('li');
+                symbolLi.textContent = `${i} - ${symbols[random]}`;
+                symbolUl.appendChild(symbolLi);            
+            };
+        };
+    //};    
 };
+init ();
