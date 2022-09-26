@@ -14,26 +14,26 @@
         <title>Mind Reader</title>
     </head>
     <body>
-        <div class="container-sm text-center pt-5">
-            <div class="row overflow-scroll justify-content-center">
-                <div class="col-6">
-                    <h1 id ="header" class="fw-bold overflow-scroll"></h1>
+        <div class="container text-center pt-5">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-10">
+                    <h1 id ="header" class="fw-bold"></h1>
                 </div>
             </div>
-            <div class="row justify-content-end">
+            <div class="row overflow-scroll justify-content-center" id="disp">
+                <div class="col" id="highlight">
+                </div>
+            </div>    
+            <div class ="row justify-content-center align-items-center">
+                <p id ="example" class="fs-4 fw-bold"></p>
+                <p id ="helper" class="fs-4 fw-bold"></p>
+            </div>
+            <div class="row justify-content-around align-items-center">
                 <div class="col">
                     <button id ="resetBtn" class="btn btn-secondary"></button>
                     <button id="goBtn"class="btn btn-secondary"></button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
                     <button id="nextBtn" class="btn btn-secondary"></button>
                 </div>
-            </div>
-            <div class ="row" id="directions">
-                <p id ="example" class="fs-4 fw-bold"></p>
-                <p id ="helper" class="fs-4 fw-bold"></p>
             </div>
         </div>
     </body>
