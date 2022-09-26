@@ -59,10 +59,10 @@ let state = {
         },
         {
         pageNum: 5,
-        header: `Your symbol is ${answerArr}`,
+        header: answerArr,
         nextBtn: '',
         example: '',
-        helper: 'Note the symbol beside the number',
+        helper: `Your symbol is ${answerArr}`,
         resetBtn: 'Reset <i class="bi bi-recycle"></i>',
         goBtn: '',
         symbols: '',            
@@ -165,10 +165,12 @@ function symbolFun () {
             let random = Math.floor(Math.random()*symbols.length);
             if (i % 9 === 0) {
                 symbolLi = document.createElement('li');
+                symbolLi.style.listStyleType = 'none'; //no bullets
                 symbolLi.textContent = `${i} - ${answerArr}`;
                 symbolUl.appendChild(symbolLi);
             } else {
                 symbolLi = document.createElement('li');
+                symbolLi.style.listStyleType = 'none';
                 symbolLi.textContent = `${i} - ${symbols[random]}`;
                 symbolUl.appendChild(symbolLi);            
             };

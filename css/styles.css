@@ -1,13 +1,9 @@
-#highlight {
-    max-height: 150px;
+.container {
+    min-height: 400px;
 }
 
-div[class*="container"] {
-    min-height: 150px;
-}
-
-div[class*="col"] {
-    min-height: 150px;
+.col {
+    max-height: 200px;
 }
 
 body {
@@ -16,4 +12,9 @@ body {
     rgb(10, 209, 209) 70px,
     rgb(6, 222, 222) 150px
     );
+}
+
+#disp {
+    max-height: 200px;
+    min-height: 200px;
 }
